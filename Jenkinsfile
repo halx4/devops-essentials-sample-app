@@ -1,9 +1,7 @@
 pipeline {
   agent any
 
-  // triggers {
-    // pollSCM('H/15 * * * *')
-  // }
+
 
   environment{
       def ECR_NAME = '043260917987.dkr.ecr.us-east-2.amazonaws.com/experimental_site'
