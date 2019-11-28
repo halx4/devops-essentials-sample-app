@@ -28,7 +28,7 @@ pipeline {
     stage('PrintInfo') {
         steps {
             sh """
-            // echo "deployToDev=${params.deployToDev}"
+            # echo "deployToDev=${params.deployToDev}"
             echo "deployToStg=${params.deployToStg}"
             echo "deployToPrd=${params.deployToPrd}"
             """
