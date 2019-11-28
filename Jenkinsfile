@@ -4,8 +4,8 @@ pipeline {
 
 
   environment{
-      def ECR_NAME = '043260917987.dkr.ecr.eu-west-2.amazonaws.com/foivos-experimental'
-      def PROJECT = 'experimental_site'
+      def ECR_NAME = '043260917987.dkr.ecr.eu-west-2.amazonaws.com'
+      def PROJECT = 'foivos-experimental'
       def VERSION = 'latest'
       
       def REGION = "us-east-2"
