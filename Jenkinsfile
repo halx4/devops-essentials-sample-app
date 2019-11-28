@@ -4,7 +4,7 @@ pipeline {
 
 
   environment{
-      def ECR_NAME = '043260917987.dkr.ecr.us-east-2.amazonaws.com/experimental_site'
+      def ECR_NAME = '043260917987.dkr.ecr.eu-west-2.amazonaws.com/foivos-experimental'
       def PROJECT = 'experimental_site'
       def VERSION = 'latest'
       
@@ -19,7 +19,6 @@ pipeline {
   }
   
   parameters {
-    // ooleanParam(name: 'deployToDev', defaultValue: false, description: 'Deploy to dev?')
     booleanParam(name: 'deployToStg', defaultValue: false, description: 'Deploy to stg?')
     booleanParam(name: 'deployToPrd', defaultValue: false, description: 'Deploy to prd?')
   }
@@ -28,30 +27,19 @@ pipeline {
     stage('PrintInfo') {
         steps {
             sh """
-            # echo "deployToDev=${params.deployToDev}"
             echo "deployToStg=${params.deployToStg}"
             echo "deployToPrd=${params.deployToPrd}"
             """
         }
-    } 
-  
-    stage('Build') {
-      steps {
-        sh """
-            echo STEP!
-        """
-      }
-    }        
+    }   
     
-    //stage('Bake docker image') {
-      //  steps{
-        //    script{
-          //      DCR_IMAGE = docker.build ("$IMAGE")
-            //}
-        //}
-    //}
-    
-   
+    stage('Bake docker image') {
+       steps{
+           script{
+               DCR_IMAGE = docker.build ("$IMAGE")
+            }
+        }
+    }
     
     stage('Docker push'){
         steps{
