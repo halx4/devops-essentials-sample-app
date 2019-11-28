@@ -29,7 +29,8 @@ pipeline {
             sh """
             echo "deployToStg=${params.deployToStg}"
             echo "deployToPrd=${params.deployToPrd}"
-            """
+            whoami
+         """
         }
     }   
     
